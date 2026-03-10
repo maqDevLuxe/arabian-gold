@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 4%;
+    --foreground: 40 20% 90%;
+
+    --card: 0 0% 7%;
+    --card-foreground: 40 20% 90%;
+
+    --popover: 0 0% 7%;
+    --popover-foreground: 40 20% 90%;
+
+    --primary: 38 80% 50%;
+    --primary-foreground: 0 0% 4%;
+
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 40 20% 85%;
+
+    --muted: 0 0% 14%;
+    --muted-foreground: 40 10% 55%;
+
+    --accent: 30 60% 30%;
+    --accent-foreground: 40 30% 90%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 40 20% 18%;
+    --input: 40 20% 18%;
+    --ring: 38 80% 50%;
+
+    --radius: 0.5rem;
+
+    --gold: 38 80% 50%;
+    --gold-light: 40 70% 65%;
+    --gold-dark: 35 90% 35%;
+    --amber: 30 80% 40%;
+    --obsidian: 0 0% 4%;
+    --smoke: 0 0% 20%;
+
+    --font-display: 'Cinzel', serif;
+    --font-body: 'Inter', sans-serif;
+
+    --glass-bg: 0 0% 100% / 0.05;
+    --glass-border: 40 50% 50% / 0.15;
+    --glass-shine: 40 80% 70% / 0.1;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+}
+
+@layer components {
+  .glass-card {
+    background: hsla(var(--glass-bg));
+    border: 1px solid hsla(var(--glass-border));
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  .glass-card-gold {
+    background: hsla(var(--glass-bg));
+    border: 1px solid hsla(var(--glass-border));
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 40px hsla(38, 80%, 50%, 0.05), inset 0 1px 0 hsla(var(--glass-shine));
+  }
+
+  .text-gold-gradient {
+    background: linear-gradient(135deg, hsl(var(--gold-light)), hsl(var(--gold)), hsl(var(--gold-dark)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .border-gold-gradient {
+    border-image: linear-gradient(135deg, hsl(var(--gold-dark)), hsl(var(--gold)), hsl(var(--gold-dark))) 1;
+  }
+
+  .bg-obsidian-gradient {
+    background: linear-gradient(180deg, hsl(var(--obsidian)) 0%, hsl(0, 0%, 6%) 50%, hsl(var(--obsidian)) 100%);
+  }
+
+  .section-padding {
+    @apply py-24 md:py-32 px-6 md:px-12 lg:px-20;
+  }
+
+  .gold-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, hsl(var(--gold) / 0.4), transparent);
+  }
+
+  .gold-glow {
+    box-shadow: 0 0 60px hsla(38, 80%, 50%, 0.15), 0 0 120px hsla(38, 80%, 50%, 0.05);
+  }
+}
+
+@layer utilities {
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-float-slow {
+    animation: float 8s ease-in-out infinite;
+  }
+
+  .animate-shimmer {
+    animation: shimmer 3s ease-in-out infinite;
+  }
+
+  .animate-gold-pulse {
+    animation: goldPulse 4s ease-in-out infinite;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes shimmer {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes goldPulse {
+  0%, 100% { box-shadow: 0 0 20px hsla(38, 80%, 50%, 0.1); }
+  50% { box-shadow: 0 0 40px hsla(38, 80%, 50%, 0.3); }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(var(--obsidian));
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--gold) / 0.3);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--gold) / 0.5);
+}
